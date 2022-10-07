@@ -6,8 +6,9 @@ console.log("users features reached");
 
 
 router
-.route("/all")
-.get(userService.getAllUsers)
+.get("/all",userService.getAllUsers)
+.get("/:id",userService.getUserData)
+
 
 /**
  * Pour chaque route --> un service
