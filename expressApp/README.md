@@ -27,3 +27,11 @@ CREATE TABLE comments (
 
 user: 
     Contient tte 
+
+# basic url = http://localhost:3000/api/01
+# Endpoint list
+
+/users: 
+  /all : all the users
+  /:id : a specific user
+  /post : create a user 

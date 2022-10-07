@@ -19,9 +19,9 @@ const getAllUsers = (req,res,next) => {
   
 }
 const createUser = (req,res) => {
-  const { name, email } = req.body
+  const { name, email ,pwd} = req.body 
 
-  pool.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *', [name, email], (error, results) => {
+  pool.query('INSERT INTO users (name, email,pwd) VALUES ($1, $2,$3) RETURNING *', [name, email,pwd], (error, results) => {
     if (error) {
       throw error
     }
@@ -47,5 +47,6 @@ const getUserData = (req, res,next) => {
 }
 module.exports= {
     getUserData,
-    getAllUsers
+    getAllUsers,
+    createUser
 }
