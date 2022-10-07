@@ -1,4 +1,4 @@
-import Pool from 'pg'
+const Pool = require('pg').Pool
 
 const pool = new Pool({
     user: 'mansour',
@@ -7,6 +7,14 @@ const pool = new Pool({
     password: 'Access/fedora/6',
     port: 5432,
   })
+const getAllUsers = (req,res) => {
+  pool.query('SELECT * FROM users ORDER BY iduser ASC', (error, results) => {
+    if (error) {
+      throw error
+    }
+    res.status(200).json(results.rows)
+  })
+}
 
 const getUserData = (request, response) => {
     const id = parseInt(request.params.id)
@@ -24,5 +32,6 @@ const getUserData = (request, response) => {
 
 }
 module.exports= {
-    getUserData
+    getUserData,
+    getAllUsers
 }
